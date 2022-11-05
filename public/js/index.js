@@ -94,7 +94,7 @@ const sendEmail = async (email,) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'https://127.0.0.1:3000/api/v1/users/forgotPassword',
+      url: '/api/v1/users/forgotPassword',//https://127.0.0.1:3000
       withCredentials:true,
    
       data: {
@@ -119,7 +119,7 @@ const resetPassword = async (password,passwordConfirm,token) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: `https://127.0.0.1:3000/api/v1/users/resetPassword/${token}`,
+      url: `/api/v1/users/resetPassword/${token}`,//https://127.0.0.1:3000
       withCredentials:true,
    
       data: {
@@ -151,7 +151,7 @@ const register = async (name,email, password,passwordConfirm) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'https://127.0.0.1:3000/api/v1/users/signup',
+      url: '/api/v1/users/signup', //https://127.0.0.1:3000
       withCredentials:true,
    
       data: {
@@ -184,7 +184,7 @@ const login = async (email, password) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'https://127.0.0.1:3000/api/v1/users/login',
+      url: '/api/v1/users/login',//https://127.0.0.1:3000
       withCredentials:true,
    
       data: {
@@ -246,7 +246,6 @@ if(forgotPasswordForm){
     e.preventDefault();
     const password = document.getElementById('password').value;
     const passwordConfirm=document.getElementById('passwordConfirm').value;
-    console.log(document.URL,'urllllllllllll')
     const token=document.URL.split('/')
     resetPassword(password,passwordConfirm,token[token.length-1])
   })
@@ -262,7 +261,7 @@ if(forgotPasswordForm){
     try {
       const res = await axios({
         method: 'GET',
-        url: 'https://127.0.0.1:3000/api/v1/users/logout'
+        url: '/api/v1/users/logout'//https://127.0.0.1:3000
       });
       if ((res.data.status = 'success')) location.reload(true);
     } catch (err) {
@@ -290,8 +289,8 @@ const updateSettings = async (data, type) => {
   try {
     const url =
       type === 'password'
-        ? 'https://127.0.0.1:3000/api/v1/users/updateMyPassword'
-        : 'https://127.0.0.1:3000/api/v1/users/updateMe';
+        ? '/api/v1/users/updateMyPassword'//https://127.0.0.1:3000
+        : '/api/v1/users/updateMe';//https://127.0.0.1:3000
 
     const res = await axios({
       method: 'PATCH',
@@ -363,7 +362,7 @@ if (userPasswordForm)
     try {
       // 1) Get checkout session from API
       const session = await axios(
-        `https://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`
+        `/api/v1/bookings/checkout-session/${tourId}` //https://127.0.0.1:3000
       );
       console.log(session);
   

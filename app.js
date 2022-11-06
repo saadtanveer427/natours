@@ -32,12 +32,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 const corsConfig = {
   credentials: true,
-  origin: ["https://127.0.0.1:3000","https://localhost:3000"]
+  origin: "*"//["https://127.0.0.1:3000","https://localhost:3000"]
 };
 
  app.use(cors(corsConfig));
 //app.use(cors())
-
+app.options('*',cors())
 
 // Set security HTTP headers
 //app.use(helmet());

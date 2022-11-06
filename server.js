@@ -41,7 +41,7 @@ const port = process.env.PORT || 3000;
 //const server=app.listen(port, () => {  original code  is replaced by below line
 
 const server=app.listen(port, () => { //this one only
-  console.log(`App running on port ${port}...`);
+  console.log(`App running on ports ${port}...`);
 });
 
 process.on('unhandledRejection', err => {

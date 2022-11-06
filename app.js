@@ -21,13 +21,15 @@ const viewRouter = require('./routes/viewRoutes');
 
 const app = express();
 
+app.enable('trust proxy')
+
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 // 1) GLOBAL MIDDLEWARES
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
-//app.set('trust proxy', 1)
 const corsConfig = {
   credentials: true,
   origin: ["https://127.0.0.1:3000","https://localhost:3000"]

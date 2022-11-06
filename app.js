@@ -19,6 +19,8 @@ const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 const viewRouter = require('./routes/viewRoutes');
 
+const bookingController = require('./controllers/bookingController')
+
 const app = express();
 
 app.enable('trust proxy')
@@ -35,7 +37,7 @@ const corsConfig = {
   origin: "*"//["https://127.0.0.1:3000","https://localhost:3000"]
 };
 
- app.use(cors(corsConfig));
+app.use(cors(corsConfig));
 //app.use(cors())
 app.options('*',cors())
 
@@ -73,6 +75,9 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP, please try again in an hour!'
 });
 app.use('/api', limiter);
+
+app.post('/webhook-checkout',express.raw({type:'application/json'}),
+bookingController.webhookCheckout)
 
 // Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));

@@ -87,7 +87,7 @@ block content
         
         if user
           if booked
-            button.btn.btn--green.span-all-rows(disabled) Already Booked
+            button.btn.btn--green.span-all-rows#booked(disabled) Already Booked
           else
             button.btn.btn--green.span-all-rows#book-tour(data-tour-id=`${tour.id}`) Book tour now!
         else

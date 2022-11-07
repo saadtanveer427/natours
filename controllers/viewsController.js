@@ -42,9 +42,9 @@ exports.getTour = catchAsync(async (req, res, next) => {
   // 3) Render template using data from 1)
 
   
-// if(await Booking.findOne({user:req.user._id,tour:tour._id,paid:true})){
-//   res.locals.booked=true;
-// }
+if(res.locals.user && (await Booking.findOne({user:req.locals.user._id,tour:tour._id,paid:true}))){
+  res.locals.booked=true;
+}
 
   res.status(200).render('tour', {
     title: `${tour.name} Tour`,
